@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATLAS Shield - Privacy Policy</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0B0E17;
+            --bg-secondary: #131829;
+            --bg-card: #1A1F35;
+            --purple: #3D0066;
+            --purple-light: #6B21A8;
+            --pink: #E4003A;
+            --green: #00E676;
+            --green-dim: #00C853;
+            --gold: #FFD740;
+            --text-primary: #E8EAF0;
+            --text-secondary: #9CA3B8;
+            --text-dim: #6B7394;
+            --border: #252B45;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        .bg-glow {
+            position: fixed;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(61, 0, 102, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+            position: relative;
+            z-index: 1;
+        }
+        .header {
+            text-align: center;
+            padding: 48px 0 40px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 48px;
+        }
+        .shield-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--purple), var(--purple-light));
+            border-radius: 16px;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+        .header h1 span {
+            background: linear-gradient(135deg, var(--green), var(--green-dim));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        .effective-date {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 6px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .section { margin-bottom: 40px; }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--purple), var(--purple-light));
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+        }
+        .highlight-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 20px 0;
+        }
+        .highlight-card.green { border-left: 3px solid var(--green); }
+        .highlight-card.gold { border-left: 3px solid var(--gold); }
+        .highlight-card.pink { border-left: 3px solid var(--pink); }
+        .highlight-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .highlight-card p { margin-bottom: 0; font-size: 0.9rem; }
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .data-table th {
+            background: var(--purple);
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .data-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .data-table tr:last-child td { border-bottom: none; }
+        .data-table tr:nth-child(even) td { background: var(--bg-card); }
+        .data-table tr:nth-child(odd) td { background: var(--bg-secondary); }
+        .badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .badge-green { background: rgba(0, 230, 118, 0.12); color: var(--green); }
+        .badge-gold { background: rgba(255, 215, 64, 0.12); color: var(--gold); }
+        .badge-pink { background: rgba(228, 0, 58, 0.12); color: var(--pink); }
+        .permission-list { list-style: none; margin: 16px 0; }
+        .permission-list li {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .permission-list li:last-child { border-bottom: none; }
+        .permission-list .perm-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card);
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .permission-list .perm-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--green);
+            display: block;
+            margin-bottom: 2px;
+        }
+        .footer {
+            margin-top: 60px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer p { font-size: 0.85rem; color: var(--text-dim); }
+        .footer-brand {
+            margin-top: 24px;
+            padding: 16px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        .footer-brand p { color: var(--text-secondary); margin-bottom: 0; }
+        .email-link {
+            color: #00E676;
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .email-link:hover { text-decoration: underline; }
+        @media (max-width: 600px) {
+            .container { padding: 24px 16px 60px; }
+            .header h1 { font-size: 1.6rem; }
+            .data-table th, .data-table td { padding: 10px 12px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div class="container">
+
+        <div class="header">
+            <div class="shield-icon">&#x1F6E1;&#xFE0F;</div>
+            <h1>ATLAS <span>Shield</span></h1>
+            <div class="subtitle">Privacy Policy</div>
+            <div class="effective-date">Effective: April 6, 2026</div>
+        </div>
+
+        <div class="section">
+            <p>ATLAS Shield ("the App," "we," "our") is an intelligent spyware detection application for Android. We are deeply committed to protecting your privacy - in fact, that is the entire purpose of our app. This Privacy Policy explains how we handle information when you use ATLAS Shield.</p>
+            <div class="highlight-card green">
+                <h3>&#x1F512; Our Core Privacy Commitment</h3>
+                <p>ATLAS Shield is built on a privacy-first architecture. All scanning, analysis, and threat detection happens entirely on your device. We do not collect, transmit, store, or sell any personal data. Period.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>Information We Collect</h2>
+            </div>
+            <p><strong style="color: var(--green);">We collect no personal data.</strong> ATLAS Shield is designed to operate entirely on your device without any data leaving your phone. Specifically:</p>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Data Type</th><th>Collected?</th><th>Details</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Personal Information</td><td><span class="badge badge-green">NO</span></td><td>No name, email, phone, or identity data</td></tr>
+                    <tr><td>Network Traffic Content</td><td><span class="badge badge-green">NO</span></td><td>We inspect metadata (IPs/domains) only, never content</td></tr>
+                    <tr><td>Browsing History</td><td><span class="badge badge-green">NO</span></td><td>No browsing data is stored or transmitted</td></tr>
+                    <tr><td>Location Data</td><td><span class="badge badge-green">NO</span></td><td>No GPS or location tracking</td></tr>
+                    <tr><td>Contacts / Messages</td><td><span class="badge badge-green">NO</span></td><td>No access to contacts, SMS, or call logs</td></tr>
+                    <tr><td>Device Identifiers</td><td><span class="badge badge-green">NO</span></td><td>No IMEI, advertising ID, or hardware identifiers</td></tr>
+                    <tr><td>Analytics / Telemetry</td><td><span class="badge badge-green">NO</span></td><td>No third-party analytics SDKs or trackers</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>How ATLAS Shield Works</h2>
+            </div>
+            <p>ATLAS Shield uses a multi-layer scan architecture to detect spyware, stalkerware, and other malicious threats on your device. Here is how each layer operates:</p>
+            <div class="highlight-card green">
+                <h3>Layer 1 - Whitelist and Anti-Tunneling</h3>
+                <p>Filters known safe connections to reduce false positives. Detects attempts to tunnel malicious traffic through trusted services.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>Layer 2 - IP IOC Matching</h3>
+                <p>Matches active network connections against a local database of known malicious IP addresses sourced from Citizen Lab, CISA KEV, and AlienVault OTX.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>Layer 3 - Domain IOC Matching</h3>
+                <p>Checks DNS queries and domain connections against known malicious domains associated with spyware command-and-control infrastructure.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>Layer 4 - Behavioral Analysis</h3>
+                <p>Analyzes app behavior patterns and network activity to detect suspicious patterns that may indicate zero-day threats not yet in any IOC database.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>App Hash and Permission Scanning</h3>
+                <p>Scans installed application hashes and permission requests against known spyware signatures to identify malicious or compromised applications.</p>
+            </div>
+            <p>All layers operate <strong style="color: var(--text-primary);">entirely on your device</strong>. No scan results, threat data, or analysis outputs are transmitted to any external server.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>VPN Service Usage</h2>
+            </div>
+            <p>ATLAS Shield uses Android's VpnService API to create a <strong style="color: var(--text-primary);">local-only VPN tunnel</strong> on your device. This is essential for real-time network traffic inspection.</p>
+            <div class="highlight-card gold">
+                <h3>Important: This is NOT a Traditional VPN</h3>
+                <p>Unlike commercial VPN services, ATLAS Shield does NOT route your traffic through any external server. The VPN runs entirely on your device as a local traffic filter. Your internet traffic goes directly to its intended destination - we simply inspect the metadata (IP addresses and domain names) to check against our threat intelligence database before allowing the connection to proceed.</p>
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr><th>VPN Aspect</th><th>ATLAS Shield</th><th>Traditional VPN</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Traffic Routing</td><td>Local device only</td><td>External servers</td></tr>
+                    <tr><td>External Servers</td><td><span class="badge badge-green">NONE</span></td><td>Required</td></tr>
+                    <tr><td>Data Transmitted</td><td><span class="badge badge-green">ZERO</span></td><td>All traffic</td></tr>
+                    <tr><td>Purpose</td><td>Threat detection</td><td>IP masking / privacy</td></tr>
+                    <tr><td>Content Inspection</td><td>Metadata only (IP/Domain)</td><td>Varies by provider</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>Threat Intelligence Sources</h2>
+            </div>
+            <p>ATLAS Shield maintains a local database of Indicators of Compromise (IOCs) sourced from the following reputable cybersecurity organizations:</p>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Source</th><th>Type</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Citizen Lab</td><td><span class="badge badge-gold">Research</span></td><td>Academic research lab tracking digital espionage and nation-state spyware</td></tr>
+                    <tr><td>Amnesty International MVT</td><td><span class="badge badge-gold">Research</span></td><td>Mobile Verification Toolkit indicators for detecting Pegasus and similar spyware</td></tr>
+                    <tr><td>CISA KEV</td><td><span class="badge badge-pink">Government</span></td><td>U.S. Cybersecurity and Infrastructure Security Agency Known Exploited Vulnerabilities catalog</td></tr>
+                    <tr><td>AlienVault OTX</td><td><span class="badge badge-gold">Community</span></td><td>Open Threat Exchange community-driven threat intelligence platform</td></tr>
+                </tbody>
+            </table>
+            <p>These IOC databases are bundled with the app and synced periodically via encrypted updates. Only IOC data (malicious IPs, domains, and app hashes) is downloaded - no user data is uploaded during this process.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2>Permissions We Request</h2>
+            </div>
+            <p>ATLAS Shield requests only the permissions strictly necessary for its security functions:</p>
+            <ul class="permission-list">
+                <li>
+                    <div class="perm-icon">&#x1F517;</div>
+                    <div>
+                        <span class="perm-name">BIND_VPN_SERVICE</span>
+                        Required to create the local VPN tunnel for real-time network traffic inspection. No data is routed externally.
+                    </div>
+                </li>
+                <li>
+                    <div class="perm-icon">&#x1F4E6;</div>
+                    <div>
+                        <span class="perm-name">QUERY_ALL_PACKAGES</span>
+                        Required to scan installed applications against known spyware signatures and malicious app hashes.
+                    </div>
+                </li>
+                <li>
+                    <div class="perm-icon">&#x1F310;</div>
+                    <div>
+                        <span class="perm-name">INTERNET</span>
+                        Required to sync IOC threat intelligence database updates. No personal data is transmitted.
+                    </div>
+                </li>
+                <li>
+                    <div class="perm-icon">&#x1F514;</div>
+                    <div>
+                        <span class="perm-name">POST_NOTIFICATIONS</span>
+                        Required to alert you when threats are detected or when the VPN monitor status changes.
+                    </div>
+                </li>
+                <li>
+                    <div class="perm-icon">&#x2699;&#xFE0F;</div>
+                    <div>
+                        <span class="perm-name">FOREGROUND_SERVICE</span>
+                        Required to keep the Guardian VPN Monitor running reliably in the background for continuous protection.
+                    </div>
+                </li>
+                <li>
+                    <div class="perm-icon">&#x1F50B;</div>
+                    <div>
+                        <span class="perm-name">REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</span>
+                        Requested to prevent Android from stopping the security monitoring service during battery optimization.
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2>Data Storage</h2>
+            </div>
+            <p>All data generated by ATLAS Shield is stored locally on your device using SQLite and remains under your control:</p>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Data</th><th>Storage</th><th>Purpose</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>IOC Database</td><td>Local SQLite</td><td>Threat intelligence for IOC matching</td></tr>
+                    <tr><td>Scan Results</td><td>Local SQLite</td><td>Historical scan logs for your reference</td></tr>
+                    <tr><td>Connection Logs</td><td>Local SQLite</td><td>Network connection history for threat analysis</td></tr>
+                    <tr><td>App Settings</td><td>Local Storage</td><td>Your preferences and configuration</td></tr>
+                </tbody>
+            </table>
+            <p>Uninstalling ATLAS Shield will permanently delete all locally stored data from your device.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2>Third-Party Services</h2>
+            </div>
+            <p>ATLAS Shield does not integrate any third-party analytics, advertising, or tracking services. We do not use:</p>
+            <p>Google Analytics or Firebase Analytics, Facebook SDK or any social media trackers, advertising networks or ad SDKs, crash reporting services that transmit data externally, or any other third-party data collection tools.</p>
+            <p>The only external communication is the periodic IOC database sync, which downloads updated threat intelligence data. This is a one-way download - no user data is sent.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">08</span>
+                <h2>Subscriptions and Payments</h2>
+            </div>
+            <p>ATLAS Shield offers premium features through Google Play subscription billing. All payment processing is handled entirely by Google Play. We do not collect, process, or store any payment information including credit card numbers, billing addresses, or financial data.</p>
+            <p>Subscription management (purchase, renewal, cancellation) is handled through your Google Play account settings.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">09</span>
+                <h2>Children's Privacy</h2>
+            </div>
+            <p>ATLAS Shield is not directed at children under the age of 13. We do not knowingly collect any personal information from children. Since our app collects no personal data from any user, this applies universally.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">10</span>
+                <h2>Changes to This Policy</h2>
+            </div>
+            <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated effective date. We encourage you to review this policy periodically. Continued use of ATLAS Shield after changes constitutes acceptance of the updated policy.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">11</span>
+                <h2>Contact Us</h2>
+            </div>
+            <p>If you have any questions, concerns, or requests regarding this Privacy Policy or ATLAS Shield's data practices, please contact us at:</p>
+            <div class="highlight-card green">
+                <h3>Contact</h3>
+                <p>Email: <span id="ce1" class="email-link"></span><br>
+                Developer: Abdullah Abu Shamah<br>
+                Application: ATLAS Shield - Intelligent Spyware Protection</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>For questions or concerns about this Privacy Policy:</p>
+            <span id="ce2" class="email-link"></span>
+            <div class="footer-brand">
+                <p>&#x1F6E1;&#xFE0F; <strong>ATLAS Shield</strong> - Enterprise-Grade Protection. Consumer Pricing.<br>
+                &#169; 2026 Abdullah Abu Shamah. All rights reserved.</p>
+            </div>
+        </div>
+
+    </div>
+    <script>
+    (function(){
+        var p1='shamah';var p2='82';var p3='gmail';var p4='com';
+        var e=p1+p2+String.fromCharCode(64)+p3+'.'+p4;
+        var h='<a class="email-link" href="mai'+'lto:'+e+'">'+e+'</a>';
+        document.getElementById('ce1').innerHTML=h;
+        document.getElementById('ce2').innerHTML=h;
+    })();
+    </script>
+</body>
+</html>
