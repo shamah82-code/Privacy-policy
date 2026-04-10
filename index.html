@@ -242,7 +242,7 @@
             <div class="shield-icon">&#x1F6E1;&#xFE0F;</div>
             <h1>ATLAS <span>Shield</span></h1>
             <div class="subtitle">Privacy Policy</div>
-            <div class="effective-date">Effective: April 6, 2026</div>
+            <div class="effective-date">Effective: April 10, 2026</div>
         </div>
 
         <div class="section">
@@ -280,26 +280,58 @@
                 <span class="section-number">02</span>
                 <h2>How ATLAS Shield Works</h2>
             </div>
-            <p>ATLAS Shield uses a multi-layer scan architecture to detect spyware, stalkerware, and other malicious threats on your device. Here is how each layer operates:</p>
+            <p>ATLAS Shield uses an 11-layer scan architecture to detect spyware, stalkerware, and other malicious threats on your device. Here is how each layer operates:</p>
             <div class="highlight-card green">
-                <h3>Layer 1 - Whitelist and Anti-Tunneling</h3>
-                <p>Filters known safe connections to reduce false positives. Detects attempts to tunnel malicious traffic through trusted services.</p>
+                <h3>Layer 1 — Hash &amp; Package IOC Matching</h3>
+                <p>Matches installed app SHA256 hashes and package names against a local database of known malware (SpyNote, Pegasus, Predator, Hermit, stalkerware families). Zero false positives.</p>
             </div>
             <div class="highlight-card green">
-                <h3>Layer 2 - IP IOC Matching</h3>
-                <p>Matches active network connections against a local database of known malicious IP addresses sourced from Citizen Lab, CISA KEV, and AlienVault OTX.</p>
+                <h3>Layer 2 — Permission Risk Analysis</h3>
+                <p>Analyzes dangerous permission combinations (camera + microphone + SMS + contacts) that are characteristic of surveillance software. Flags apps with 4+ dangerous permissions.</p>
             </div>
             <div class="highlight-card green">
-                <h3>Layer 3 - Domain IOC Matching</h3>
-                <p>Checks DNS queries and domain connections against known malicious domains associated with spyware command-and-control infrastructure.</p>
+                <h3>Layer 3 — Behavioral Indicators</h3>
+                <p>Detects apps misusing accessibility services, apps installed from unknown or untrusted sources, and hidden apps without launcher icons — common characteristics of surveillance software.</p>
             </div>
             <div class="highlight-card green">
-                <h3>Layer 4 - Behavioral Analysis</h3>
-                <p>Analyzes app behavior patterns and network activity to detect suspicious patterns that may indicate zero-day threats not yet in any IOC database.</p>
+                <h3>Layer 4 — Network Behavioral Analysis</h3>
+                <p>Analyzes network connection patterns to detect beaconing (repeated check-ins to command servers), unusual frequency bursts (potential data exfiltration), connections to known threat infrastructure, and traffic tunneling through trusted services. Alert only — the user always decides whether to block or dismiss.</p>
             </div>
             <div class="highlight-card green">
-                <h3>App Hash and Permission Scanning</h3>
-                <p>Scans installed application hashes and permission requests against known spyware signatures to identify malicious or compromised applications.</p>
+                <h3>Layer 5 — Heuristic Unknown Threat Detection</h3>
+                <p>Score-based analysis that catches threats not in any database. Evaluates 10 risk indicators including hidden apps, template package names, brand impersonation, and suspicious installer sources. Catches repackaged malware and amateur spyware.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>Layer 6 — Per-App Exfiltration Detection</h3>
+                <p>Monitors per-app upload patterns against a 7-day rolling baseline. Detects unusual upload spikes and unexpected night-time activity from apps with no prior night-time usage. Critical threats automatically restrict the app's network access to protect your data. Blocked attempts are logged locally so you can review them in the app. All analysis is on-device only.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>Layer 7 — Linked Behavior Detection</h3>
+                <p>Detects coordinated malicious behavior across multiple apps. Catches modular spyware where components work together — one receives commands, another collects data, a third exfiltrates. Detects cross-app destination correlation, chain behavior, synchronized night activity, and coordinated exfiltration patterns. Alert only — user decides. All correlation analysis runs entirely on-device.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>Layer 8 — Deep System Integrity Check</h3>
+                <p>Reads standard device health indicators (network throughput, CPU temperature, battery usage, memory) to detect if malware is operating below the app level and bypassing normal security controls. If a significant discrepancy is detected between expected and actual network activity, the app can temporarily restrict network access with your confirmation to prevent data loss — phone calls and SMS remain unaffected. All readings are processed entirely on-device.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>Layer 9 — Payload Pattern Analysis</h3>
+                <p>Behavioral pattern analysis that detects suspicious data uploads. Monitors upload-to-download ratios, consistent payload sizes (characteristic of encrypted exfiltration), connections to known threat infrastructure, and repetitive single-destination patterns. Critical threats automatically block the destination. Legitimate apps that naturally use encryption (messaging, banking, VPN, backup) are excluded from analysis. All analysis runs on-device.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>Layer 10 — Advanced Hardware Anomaly Detection</h3>
+                <p>Detects signs of hardware-level surveillance by reading standard system performance indicators: interrupt activity, context switches, and CPU time distribution. Requires correlation of 3 or more anomalous signals before alerting, minimizing false positives. Alert only — no automatic action is taken, as these types of advanced threats require user awareness and professional remediation. All measurements are on-device.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>Layer 11 — Autonomous IOC Contribution</h3>
+                <p>Opt-in intelligence sharing that allows users to anonymously contribute detected threat indicators (IPs, domains, hashes, package names) to the security community via AlienVault OTX. <strong style="color: var(--green);">Default OFF</strong> — users must explicitly enable this feature. All submissions are anonymized: phone numbers, email addresses, file paths, and any identifying information are automatically stripped before sharing. User identity, contacts, app content, and precise location are NEVER included. Users can review exactly what will be shared before confirming. See Section 07 for full details.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>App Trust / Whitelist</h3>
+                <p>Users can whitelist legitimate apps that trigger false positives. Trusted apps are skipped in all scan layers. Users can remove apps from the whitelist at any time to re-enable scanning. Trust decisions are stored locally on-device only.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>Privacy Audit</h3>
+                <p>Audits the permissions granted to installed apps across 9 categories (Camera, Microphone, Location, Contacts, Storage, SMS, Phone, Overlay, Accessibility). Calculates a privacy score (0-100) based on permission exposure and highlights apps with sensitive access. All analysis is entirely on-device — no permission data is transmitted externally. Users can open Android's built-in permission settings or standard uninstall dialog for any app directly from the Privacy tab.</p>
             </div>
             <p>All layers operate <strong style="color: var(--text-primary);">entirely on your device</strong>. No scan results, threat data, or analysis outputs are transmitted to any external server.</p>
         </div>
@@ -343,9 +375,13 @@
                     <tr><td>Amnesty International MVT</td><td><span class="badge badge-gold">Research</span></td><td>Mobile Verification Toolkit indicators for detecting Pegasus and similar spyware</td></tr>
                     <tr><td>CISA KEV</td><td><span class="badge badge-pink">Government</span></td><td>U.S. Cybersecurity and Infrastructure Security Agency Known Exploited Vulnerabilities catalog</td></tr>
                     <tr><td>AlienVault OTX</td><td><span class="badge badge-gold">Community</span></td><td>Open Threat Exchange community-driven threat intelligence platform</td></tr>
+                    <tr><td>Feodo Tracker</td><td><span class="badge badge-pink">Free Feed</span></td><td>abuse.ch botnet C2 IP blocklist — tracks active command-and-control servers</td></tr>
+                    <tr><td>URLhaus</td><td><span class="badge badge-pink">Free Feed</span></td><td>abuse.ch malicious URL/domain database — tracks malware distribution sites</td></tr>
+                    <tr><td>Stalkerware Indicators</td><td><span class="badge badge-gold">Community</span></td><td>Coalition Against Stalkerware (GitHub) — 611+ stalkerware package names from known surveillance app families</td></tr>
                 </tbody>
             </table>
-            <p>These IOC databases are bundled with the app and synced periodically via encrypted updates. Only IOC data (malicious IPs, domains, and app hashes) is downloaded - no user data is uploaded during this process.</p>
+            <p>These IOC databases include built-in indicators bundled with the app and are auto-synced every 12 hours from the sources above. Only IOC data (malicious IPs, domains, and app package names) is downloaded — <strong style="color: var(--text-primary);">no user data is uploaded</strong> during the sync process. The sync is a one-way download over HTTPS.</p>
+            <p>If you opt in to IOC Contribution (Layer 11), detected threat indicators may be shared back to AlienVault OTX. See Section 07 for full details on what is and is not shared.</p>
         </div>
 
         <div class="section">
@@ -363,17 +399,17 @@
                     </div>
                 </li>
                 <li>
-                    <div class="perm-icon">&#x1F4E6;</div>
-                    <div>
-                        <span class="perm-name">QUERY_ALL_PACKAGES</span>
-                        Required to scan installed applications against known spyware signatures and malicious app hashes.
-                    </div>
-                </li>
-                <li>
                     <div class="perm-icon">&#x1F310;</div>
                     <div>
                         <span class="perm-name">INTERNET</span>
                         Required to sync IOC threat intelligence database updates. No personal data is transmitted.
+                    </div>
+                </li>
+                <li>
+                    <div class="perm-icon">&#x1F4F6;</div>
+                    <div>
+                        <span class="perm-name">ACCESS_NETWORK_STATE / ACCESS_WIFI_STATE</span>
+                        Required to determine network connectivity status for threat monitoring and VPN management.
                     </div>
                 </li>
                 <li>
@@ -386,15 +422,50 @@
                 <li>
                     <div class="perm-icon">&#x2699;&#xFE0F;</div>
                     <div>
-                        <span class="perm-name">FOREGROUND_SERVICE</span>
+                        <span class="perm-name">FOREGROUND_SERVICE / FOREGROUND_SERVICE_SPECIAL_USE</span>
                         Required to keep the Guardian VPN Monitor running reliably in the background for continuous protection.
                     </div>
                 </li>
                 <li>
-                    <div class="perm-icon">&#x1F50B;</div>
+                    <div class="perm-icon">&#x1F504;</div>
                     <div>
-                        <span class="perm-name">REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</span>
-                        Requested to prevent Android from stopping the security monitoring service during battery optimization.
+                        <span class="perm-name">RECEIVE_BOOT_COMPLETED</span>
+                        Required to automatically restart the VPN security monitor after your device reboots, ensuring continuous protection.
+                    </div>
+                </li>
+                <li>
+                    <div class="perm-icon">&#x1F697;</div>
+                    <div>
+                        <span class="perm-name">BLUETOOTH_CONNECT</span>
+                        Required for Car Mode detection. When your phone connects to a car Bluetooth system, ATLAS Shield automatically adjusts its protection profile. No Bluetooth data is collected or stored.
+                    </div>
+                </li>
+                <li>
+                    <div class="perm-icon">&#x1F4F3;</div>
+                    <div>
+                        <span class="perm-name">VIBRATE</span>
+                        Used to provide haptic feedback when critical threat alerts are triggered.
+                    </div>
+                </li>
+                <li>
+                    <div class="perm-icon">&#x1F512;</div>
+                    <div>
+                        <span class="perm-name">WAKE_LOCK</span>
+                        Required to keep the security monitoring service active during scheduled background scans, preventing the system from sleeping mid-analysis.
+                    </div>
+                </li>
+                <li>
+                    <div class="perm-icon">&#x1F6A8;</div>
+                    <div>
+                        <span class="perm-name">SYSTEM_ALERT_WINDOW</span>
+                        Required to display critical emergency threat alerts as overlays when immediate user action is needed, such as confirming a network restriction during an active threat.
+                    </div>
+                </li>
+                <li>
+                    <div class="perm-icon">&#x1F4B3;</div>
+                    <div>
+                        <span class="perm-name">BILLING</span>
+                        Required for Google Play in-app subscription processing. All payment handling is done by Google Play — ATLAS Shield never sees or stores payment information.
                     </div>
                 </li>
             </ul>
@@ -411,10 +482,19 @@
                     <tr><th>Data</th><th>Storage</th><th>Purpose</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>IOC Database</td><td>Local SQLite</td><td>Threat intelligence for IOC matching</td></tr>
+                    <tr><td>IOC Database</td><td>Local SQLite</td><td>Threat intelligence for IOC matching (9,750+ indicators from 7 sources)</td></tr>
                     <tr><td>Scan Results</td><td>Local SQLite</td><td>Historical scan logs for your reference</td></tr>
-                    <tr><td>Connection Logs</td><td>Local SQLite</td><td>Network connection history for threat analysis</td></tr>
-                    <tr><td>App Settings</td><td>Local Storage</td><td>Your preferences and configuration</td></tr>
+                    <tr><td>Connection Logs</td><td>Local SQLite</td><td>Network connection history for threat analysis (safe connections auto-deleted after 7 days)</td></tr>
+                    <tr><td>Blocked IPs</td><td>Local SQLite</td><td>IPs you have blocked or that were auto-blocked by threat detection</td></tr>
+                    <tr><td>Trusted Apps</td><td>Local SQLite</td><td>Apps you have whitelisted to skip in future scans</td></tr>
+                    <tr><td>Blocked Apps</td><td>Local SQLite</td><td>Apps whose network access has been blocked by Layer 6/7 detection</td></tr>
+                    <tr><td>Forensic Logs</td><td>Local SQLite</td><td>Evidence of blocked retry attempts from auto-blocked apps (Layer 6)</td></tr>
+                    <tr><td>App Traffic Baselines</td><td>Local SQLite</td><td>7-day rolling per-app traffic statistics for exfiltration detection</td></tr>
+                    <tr><td>Privacy Audit Results</td><td>Secure Storage</td><td>Permission audit snapshots for privacy score history (8-week rolling, on-device only)</td></tr>
+                    <tr><td>IOC Contribution Settings</td><td>Secure Storage</td><td>Opt-in preference, custom API key (if provided), auto-share toggle</td></tr>
+                    <tr><td>IOC Contribution Stats</td><td>Secure Storage</td><td>Count of shared indicators, last share date (on-device tracking only)</td></tr>
+                    <tr><td>Language Preference</td><td>Secure Storage</td><td>Your selected app language (English or Arabic)</td></tr>
+                    <tr><td>App Settings</td><td>Secure Storage</td><td>Your preferences and configuration (stored via Android Keystore)</td></tr>
                 </tbody>
             </table>
             <p>Uninstalling ATLAS Shield will permanently delete all locally stored data from your device.</p>
@@ -427,7 +507,26 @@
             </div>
             <p>ATLAS Shield does not integrate any third-party analytics, advertising, or tracking services. We do not use:</p>
             <p>Google Analytics or Firebase Analytics, Facebook SDK or any social media trackers, advertising networks or ad SDKs, crash reporting services that transmit data externally, or any other third-party data collection tools.</p>
-            <p>The only external communication is the periodic IOC database sync, which downloads updated threat intelligence data. This is a one-way download - no user data is sent.</p>
+            <p>The only external communication is the periodic IOC database sync (one-way download from the 7 sources listed in Section 04) and, <strong style="color: var(--text-primary);">if you opt in</strong>, the IOC Contribution feature (Layer 11).</p>
+            <div class="highlight-card gold">
+                <h3>&#x1F310; IOC Contribution (Opt-In Only)</h3>
+                <p>If you enable IOC Contribution in Settings, ATLAS Shield can share detected threat indicators with the security community via AlienVault OTX. This feature is <strong>OFF by default</strong> and requires explicit opt-in.</p>
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr><th>What IS Shared (if opted in)</th><th>What is NEVER Shared</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Malicious IP addresses detected by the app</td><td>Your identity, name, or account information</td></tr>
+                    <tr><td>Malicious domain names</td><td>Phone number or device identifiers</td></tr>
+                    <tr><td>SHA256 file hashes of malware</td><td>Contacts, messages, or call logs</td></tr>
+                    <tr><td>Suspicious package names</td><td>App content or browsing data</td></tr>
+                    <tr><td>Detection layer and severity level</td><td>Location (GPS, cell tower, or IP-based)</td></tr>
+                    <tr><td>Anonymized alert description (redacted)</td><td>Email addresses or file paths</td></tr>
+                </tbody>
+            </table>
+            <p>All shared data is anonymized before submission. Phone numbers, email addresses, and file paths found in alert text are automatically redacted. You can review exactly what will be shared before confirming (manual share), or enable auto-share which runs once per 24 hours after scans and sends a notification confirming what was shared.</p>
+            <p>ATLAS Shield supports multiple languages (English and Arabic). Language preferences are stored locally on your device and are never transmitted externally.</p>
         </div>
 
         <div class="section">
@@ -450,6 +549,63 @@
         <div class="section">
             <div class="section-header">
                 <span class="section-number">10</span>
+                <h2>Data Retention &amp; Deletion</h2>
+            </div>
+            <p>Since all data is stored locally on your device, you have full control over it at all times:</p>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Data</th><th>Retention</th><th>How to Delete</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Connection logs (safe)</td><td>Auto-deleted after 7 days</td><td>Automatic — no action needed</td></tr>
+                    <tr><td>Threat alerts &amp; scan results</td><td>Kept until you dismiss or uninstall</td><td>Dismiss individual alerts or uninstall the app</td></tr>
+                    <tr><td>IOC threat database</td><td>Updated every 12 hours</td><td>Uninstall the app</td></tr>
+                    <tr><td>Blocked IPs &amp; blocked apps</td><td>Kept until you unblock them</td><td>Unblock in Settings or uninstall the app</td></tr>
+                    <tr><td>Trusted/whitelisted apps</td><td>Kept until you remove trust</td><td>Remove in Settings or uninstall the app</td></tr>
+                    <tr><td>Traffic baselines (Layer 6)</td><td>7-day rolling window</td><td>Automatic — old data rolls off</td></tr>
+                    <tr><td>Privacy audit snapshots</td><td>8-week rolling window</td><td>Automatic — old snapshots roll off</td></tr>
+                    <tr><td>IOC contribution log</td><td>Kept for your reference</td><td>Uninstall the app</td></tr>
+                    <tr><td>App settings &amp; preferences</td><td>Kept until changed or uninstall</td><td>Uninstall the app</td></tr>
+                </tbody>
+            </table>
+            <div class="highlight-card green">
+                <h3>&#x1F5D1; Complete Data Deletion</h3>
+                <p>To delete ALL data stored by ATLAS Shield, simply uninstall the app from your device. Since no data is stored on external servers, uninstalling permanently and irreversibly removes all app data. You can also clear the app's data from Android Settings &gt; Apps &gt; ATLAS Shield &gt; Storage &gt; Clear Data.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">11</span>
+                <h2>Your Rights</h2>
+            </div>
+            <p>Regardless of your location, ATLAS Shield respects the following data rights by design:</p>
+            <div class="highlight-card green">
+                <h3>&#x2705; Right to Access</h3>
+                <p>All your data is already visible to you within the app — scan results, alerts, connection logs, blocked IPs, trusted apps, and privacy audits are all accessible from the app interface.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>&#x2705; Right to Deletion</h3>
+                <p>You can delete all data at any time by uninstalling the app or clearing app data from Android Settings. No data persists on any external server.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>&#x2705; Right to Portability</h3>
+                <p>All data is stored in standard SQLite format on your device and remains under your control.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>&#x2705; Right to Opt Out</h3>
+                <p>The only feature that transmits any data externally (IOC Contribution, Layer 11) is off by default and requires explicit opt-in. You can disable it at any time from Settings.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>&#x2705; Right to Be Informed</h3>
+                <p>This Privacy Policy fully discloses every type of data processed, every permission used, and the purpose of each. No hidden data collection exists.</p>
+            </div>
+            <p>If you are located in the European Economic Area (EEA), United Kingdom, California (USA), or any jurisdiction with data protection laws (GDPR, CCPA, PDPA, etc.), these rights apply to you. Since ATLAS Shield collects no personal data and stores everything locally, compliance is built into the architecture — not bolted on as an afterthought.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">12</span>
                 <h2>Changes to This Policy</h2>
             </div>
             <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated effective date. We encourage you to review this policy periodically. Continued use of ATLAS Shield after changes constitutes acceptance of the updated policy.</p>
@@ -457,7 +613,7 @@
 
         <div class="section">
             <div class="section-header">
-                <span class="section-number">11</span>
+                <span class="section-number">13</span>
                 <h2>Contact Us</h2>
             </div>
             <p>If you have any questions, concerns, or requests regarding this Privacy Policy or ATLAS Shield's data practices, please contact us at:</p>
@@ -473,7 +629,7 @@
             <p>For questions or concerns about this Privacy Policy:</p>
             <span id="ce2" class="email-link"></span>
             <div class="footer-brand">
-                <p>&#x1F6E1;&#xFE0F; <strong>ATLAS Shield</strong> - Enterprise-Grade Protection. Consumer Pricing.<br>
+                <p>&#x1F6E1;&#xFE0F; <strong>ATLAS Shield</strong> — Intelligent Spyware Protection for Everyone.<br>
                 &#169; 2026 Abdullah Abu Shamah. All rights reserved.</p>
             </div>
         </div>
