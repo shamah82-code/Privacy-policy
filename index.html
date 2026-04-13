@@ -242,7 +242,7 @@
             <div class="shield-icon">&#x1F6E1;&#xFE0F;</div>
             <h1>ATLAS <span>Shield</span></h1>
             <div class="subtitle">Privacy Policy</div>
-            <div class="effective-date">Effective: April 10, 2026</div>
+            <div class="effective-date">Effective: April 13, 2026</div>
         </div>
 
         <div class="section">
@@ -378,9 +378,14 @@
                     <tr><td>Feodo Tracker</td><td><span class="badge badge-pink">Free Feed</span></td><td>abuse.ch botnet C2 IP blocklist — tracks active command-and-control servers</td></tr>
                     <tr><td>URLhaus</td><td><span class="badge badge-pink">Free Feed</span></td><td>abuse.ch malicious URL/domain database — tracks malware distribution sites</td></tr>
                     <tr><td>Stalkerware Indicators</td><td><span class="badge badge-gold">Community</span></td><td>Coalition Against Stalkerware (GitHub) — 611+ stalkerware package names from known surveillance app families</td></tr>
+                    <tr><td>Blocklist.de</td><td><span class="badge badge-pink">Free Feed</span></td><td>Community-driven IP blocklist — 11,000+ IPs reported for attacks, brute-force, and malicious activity</td></tr>
+                    <tr><td>C2 IntelFeeds</td><td><span class="badge badge-pink">Free Feed</span></td><td>Command-and-control server IP intelligence from open-source threat feeds</td></tr>
+                    <tr><td>Phishing Army</td><td><span class="badge badge-pink">Free Feed</span></td><td>Community-curated phishing domain blocklist — 20,000+ malicious domains</td></tr>
+                    <tr><td>MalwareBazaar</td><td><span class="badge badge-pink">Free Feed</span></td><td>abuse.ch public malware SHA256 hash database — recent malware sample hashes for file-level detection</td></tr>
                 </tbody>
             </table>
-            <p>These IOC databases include built-in indicators bundled with the app and are auto-synced every 12 hours from the sources above. Only IOC data (malicious IPs, domains, and app package names) is downloaded — <strong style="color: var(--text-primary);">no user data is uploaded</strong> during the sync process. The sync is a one-way download over HTTPS.</p>
+            <p>These IOC databases include built-in indicators bundled with the app and are auto-synced every 12 hours from the sources above. Only IOC data (malicious IPs, domains, hashes, and app package names) is downloaded — <strong style="color: var(--text-primary);">no user data is uploaded</strong> during the sync process. The sync is a one-way download over HTTPS.</p>
+            <p>Additionally, ATLAS Shield performs <strong style="color: var(--text-primary);">RDAP domain age lookups</strong> to detect newly registered domains (less than 30 days old) used by malware. These lookups query public RDAP servers with only the domain name — no user data or device information is included. Results are cached locally for 7 days.</p>
             <p>If you opt in to IOC Contribution (Layer 11), detected threat indicators may be shared back to AlienVault OTX. See Section 07 for full details on what is and is not shared.</p>
         </div>
 
@@ -468,6 +473,13 @@
                         Required for Google Play in-app subscription processing. All payment handling is done by Google Play — ATLAS Shield never sees or stores payment information.
                     </div>
                 </li>
+                <li>
+                    <div class="perm-icon">&#x1F4E6;</div>
+                    <div>
+                        <span class="perm-name">QUERY_ALL_PACKAGES</span>
+                        Required to scan all installed apps for spyware detection. ATLAS Shield reads package names, permissions, and installer source of installed apps to identify malicious software. No app data, usage, or content is accessed or transmitted.
+                    </div>
+                </li>
             </ul>
         </div>
 
@@ -482,7 +494,7 @@
                     <tr><th>Data</th><th>Storage</th><th>Purpose</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>IOC Database</td><td>Local SQLite</td><td>Threat intelligence for IOC matching (9,750+ indicators from 7 sources)</td></tr>
+                    <tr><td>IOC Database</td><td>Local SQLite</td><td>Threat intelligence for IOC matching (67,000+ indicators from 10 sources)</td></tr>
                     <tr><td>Scan Results</td><td>Local SQLite</td><td>Historical scan logs for your reference</td></tr>
                     <tr><td>Connection Logs</td><td>Local SQLite</td><td>Network connection history for threat analysis (safe connections auto-deleted after 7 days)</td></tr>
                     <tr><td>Blocked IPs</td><td>Local SQLite</td><td>IPs you have blocked or that were auto-blocked by threat detection</td></tr>
@@ -490,6 +502,9 @@
                     <tr><td>Blocked Apps</td><td>Local SQLite</td><td>Apps whose network access has been blocked by Layer 6/7 detection</td></tr>
                     <tr><td>Forensic Logs</td><td>Local SQLite</td><td>Evidence of blocked retry attempts from auto-blocked apps (Layer 6)</td></tr>
                     <tr><td>App Traffic Baselines</td><td>Local SQLite</td><td>7-day rolling per-app traffic statistics for exfiltration detection</td></tr>
+                    <tr><td>App Dormancy Data</td><td>Local SQLite</td><td>Tracks app activity patterns to detect dormant apps that suddenly activate (on-device only)</td></tr>
+                    <tr><td>Permission Usage Snapshots</td><td>Local SQLite</td><td>Records which apps recently used camera, microphone, or location via Android AppOpsManager (on-device only, never transmitted)</td></tr>
+                    <tr><td>Domain Age Cache</td><td>Local SQLite</td><td>RDAP lookup results for domain registration dates, cached for 7 days (on-device only)</td></tr>
                     <tr><td>Privacy Audit Results</td><td>Secure Storage</td><td>Permission audit snapshots for privacy score history (8-week rolling, on-device only)</td></tr>
                     <tr><td>IOC Contribution Settings</td><td>Secure Storage</td><td>Opt-in preference, custom API key (if provided), auto-share toggle</td></tr>
                     <tr><td>IOC Contribution Stats</td><td>Secure Storage</td><td>Count of shared indicators, last share date (on-device tracking only)</td></tr>
@@ -507,7 +522,7 @@
             </div>
             <p>ATLAS Shield does not integrate any third-party analytics, advertising, or tracking services. We do not use:</p>
             <p>Google Analytics or Firebase Analytics, Facebook SDK or any social media trackers, advertising networks or ad SDKs, crash reporting services that transmit data externally, or any other third-party data collection tools.</p>
-            <p>The only external communication is the periodic IOC database sync (one-way download from the 7 sources listed in Section 04) and, <strong style="color: var(--text-primary);">if you opt in</strong>, the IOC Contribution feature (Layer 11).</p>
+            <p>The only external communication is the periodic IOC database sync (one-way download from the 10 sources listed in Section 04), RDAP domain age lookups (domain name only, no user data), and <strong style="color: var(--text-primary);">if you opt in</strong>, the IOC Contribution feature (Layer 11).</p>
             <div class="highlight-card gold">
                 <h3>&#x1F310; IOC Contribution (Opt-In Only)</h3>
                 <p>If you enable IOC Contribution in Settings, ATLAS Shield can share detected threat indicators with the security community via AlienVault OTX. This feature is <strong>OFF by default</strong> and requires explicit opt-in.</p>
@@ -526,6 +541,7 @@
                 </tbody>
             </table>
             <p>All shared data is anonymized before submission. Phone numbers, email addresses, and file paths found in alert text are automatically redacted. You can review exactly what will be shared before confirming (manual share), or enable auto-share which runs once per 24 hours after scans and sends a notification confirming what was shared.</p>
+            <p>To prevent duplicate submissions, ATLAS Shield checks existing contributions before sharing. If an indicator has already been reported, it is skipped — no redundant data is sent. This deduplication check only reads publicly available pulse data from the shared community account; no user-specific data is involved.</p>
             <p>ATLAS Shield supports multiple languages (English and Arabic). Language preferences are stored locally on your device and are never transmitted externally.</p>
         </div>
 
