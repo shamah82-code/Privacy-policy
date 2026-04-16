@@ -242,7 +242,7 @@
             <div class="shield-icon">&#x1F6E1;&#xFE0F;</div>
             <h1>ATLAS <span>Shield</span></h1>
             <div class="subtitle">Privacy Policy</div>
-            <div class="effective-date">Effective: April 13, 2026</div>
+            <div class="effective-date">Effective: April 16, 2026</div>
         </div>
 
         <div class="section">
@@ -341,10 +341,20 @@
                 <span class="section-number">03</span>
                 <h2>VPN Service Usage</h2>
             </div>
-            <p>ATLAS Shield uses Android's VpnService API to create a <strong style="color: var(--text-primary);">local-only VPN tunnel</strong> on your device. This is essential for real-time network traffic inspection.</p>
+            <p>ATLAS Shield uses Android's VpnService API to create a <strong style="color: var(--text-primary);">local-only VPN tunnel</strong> on your device. This is essential for real-time network traffic monitoring and per-app network control.</p>
             <div class="highlight-card gold">
                 <h3>Important: This is NOT a Traditional VPN</h3>
-                <p>Unlike commercial VPN services, ATLAS Shield does NOT route your traffic through any external server. The VPN runs entirely on your device as a local traffic filter. Your internet traffic goes directly to its intended destination - we simply inspect the metadata (IP addresses and domain names) to check against our threat intelligence database before allowing the connection to proceed.</p>
+                <p>Unlike commercial VPN services, ATLAS Shield does NOT route your traffic through any external server. The VPN runs entirely on your device as a local traffic monitor. Your internet traffic goes directly to its intended destination — we simply inspect metadata (IP addresses and domain names) to check against our threat intelligence database. <strong style="color: var(--text-primary);">Your internet speed is not affected.</strong></p>
+            </div>
+            <div class="highlight-card green">
+                <h3>Two-Mode VPN Architecture</h3>
+                <p>ATLAS Shield operates in two modes depending on whether any apps are blocked:</p>
+                <p><strong style="color: var(--green);">Monitoring Mode (no blocked apps):</strong> Only DNS queries are routed through the local VPN for domain monitoring. All other traffic uses your normal internet connection at full speed. No app traffic is intercepted or slowed down.</p>
+                <p><strong style="color: var(--green);">Blocking Mode (blocked apps exist):</strong> Only blocked apps' traffic enters the VPN tunnel — where it is dropped to prevent any network access. All other apps bypass the VPN entirely and maintain full internet speed. You can see blocked apps' connection attempts in the Monitor tab.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>Manual Blocking Controls</h3>
+                <p>Users have full control over network blocking. From Settings, you can manually block any installed app's internet access, block specific IP addresses, or block specific domains. You can also unblock any previously blocked item at any time. All blocking decisions are stored locally on-device only.</p>
             </div>
             <table class="data-table">
                 <thead>
@@ -354,7 +364,8 @@
                     <tr><td>Traffic Routing</td><td>Local device only</td><td>External servers</td></tr>
                     <tr><td>External Servers</td><td><span class="badge badge-green">NONE</span></td><td>Required</td></tr>
                     <tr><td>Data Transmitted</td><td><span class="badge badge-green">ZERO</span></td><td>All traffic</td></tr>
-                    <tr><td>Purpose</td><td>Threat detection</td><td>IP masking / privacy</td></tr>
+                    <tr><td>Speed Impact</td><td><span class="badge badge-green">ZERO</span></td><td>Varies (usually slower)</td></tr>
+                    <tr><td>Purpose</td><td>Threat detection + app blocking</td><td>IP masking / privacy</td></tr>
                     <tr><td>Content Inspection</td><td>Metadata only (IP/Domain)</td><td>Varies by provider</td></tr>
                 </tbody>
             </table>
