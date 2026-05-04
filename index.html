@@ -7,19 +7,21 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0B0E17;
-            --bg-secondary: #131829;
-            --bg-card: #1A1F35;
-            --purple: #3D0066;
-            --purple-light: #6B21A8;
-            --pink: #E4003A;
-            --green: #00E676;
-            --green-dim: #00C853;
-            --gold: #FFD740;
+            /* Atlas Shield brand palette — gold + navy. Variable names kept
+               for legacy CSS rule references; values reflect brand colors. */
+            --bg-primary: #0A1628;       /* Atlas navy */
+            --bg-secondary: #132340;
+            --bg-card: #1A2D4A;          /* Atlas card */
+            --purple: #B8902F;           /* legacy name → deep gold */
+            --purple-light: #D4A843;     /* legacy name → Atlas gold */
+            --pink: #E4003A;             /* threat indicator (kept) */
+            --green: #00E5A0;            /* Atlas success green */
+            --green-dim: #00C28A;
+            --gold: #D4A843;             /* Atlas gold */
             --text-primary: #E8EAF0;
             --text-secondary: #9CA3B8;
-            --text-dim: #6B7394;
-            --border: #252B45;
+            --text-dim: #6B8299;         /* Atlas muted */
+            --border: rgba(212, 168, 67, 0.25);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -36,7 +38,7 @@
             transform: translateX(-50%);
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(61, 0, 102, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(212, 168, 67, 0.10) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
@@ -71,7 +73,7 @@
             margin-bottom: 4px;
         }
         .header h1 span {
-            background: linear-gradient(135deg, var(--green), var(--green-dim));
+            background: linear-gradient(135deg, var(--purple-light), var(--gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -175,8 +177,8 @@
             font-weight: 600;
             font-family: 'JetBrains Mono', monospace;
         }
-        .badge-green { background: rgba(0, 230, 118, 0.12); color: var(--green); }
-        .badge-gold { background: rgba(255, 215, 64, 0.12); color: var(--gold); }
+        .badge-green { background: rgba(0, 229, 160, 0.12); color: var(--green); }
+        .badge-gold { background: rgba(212, 168, 67, 0.15); color: var(--gold); }
         .badge-pink { background: rgba(228, 0, 58, 0.12); color: var(--pink); }
         .permission-list { list-style: none; margin: 16px 0; }
         .permission-list li {
