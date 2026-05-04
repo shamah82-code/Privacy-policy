@@ -347,14 +347,16 @@
                 <p>Unlike commercial VPN services, ATLAS Shield does NOT route your traffic through any external server. The VPN runs entirely on your device as a local traffic monitor. Your internet traffic goes directly to its intended destination — we simply inspect metadata (IP addresses and domain names) to check against our threat intelligence database. <strong style="color: var(--text-primary);">Your internet speed is not affected.</strong></p>
             </div>
             <div class="highlight-card green">
-                <h3>Two-Mode VPN Architecture</h3>
-                <p>ATLAS Shield operates in two modes depending on whether any apps are blocked:</p>
-                <p><strong style="color: var(--green);">Monitoring Mode (no blocked apps):</strong> Only DNS queries are routed through the local VPN for domain monitoring. All other traffic uses your normal internet connection at full speed. No app traffic is intercepted or slowed down.</p>
-                <p><strong style="color: var(--green);">Blocking Mode (blocked apps exist):</strong> Only blocked apps' traffic enters the VPN tunnel — where it is dropped to prevent any network access. All other apps bypass the VPN entirely and maintain full internet speed. You can see blocked apps' connection attempts in the Monitor tab.</p>
+                <h3>Unified VPN Architecture</h3>
+                <p>All apps (except VoIP services and ATLAS Shield itself) route through the local VPN tunnel. Traffic is inspected on-device only — nothing is forwarded to any external server. Packets are dropped locally if (a) the source app is on your blocked list, (b) the destination IP is on a threat or user-blocked list, or (c) the queried domain is a known tracker, threat domain, or user-blocked domain. Non-blocked traffic passes through transparently with no inspection beyond metadata (IP, domain).</p>
             </div>
             <div class="highlight-card green">
                 <h3>Manual Blocking Controls</h3>
                 <p>Users have full control over network blocking. From Settings, you can manually block any installed app's internet access, block specific IP addresses, or block specific domains. You can also unblock any previously blocked item at any time. All blocking decisions are stored locally on-device only.</p>
+            </div>
+            <div class="highlight-card green">
+                <h3>Ad &amp; Tracker Blocking (Pro)</h3>
+                <p>ATLAS Shield can optionally block known advertising and tracker domains at the DNS layer. The block list (sourced from publicly maintained lists such as StevenBlack, AdGuard, EasyList, and similar) is downloaded once and stored locally — DNS queries to listed domains are dropped on-device before they leave your phone. <strong style="color: var(--text-primary);">No browsing history or query data is ever transmitted to ATLAS Shield or any third party.</strong> Users can trust individual trackers per-domain, unblock once for a session, or disable the feature entirely from Settings.</p>
             </div>
             <table class="data-table">
                 <thead>
