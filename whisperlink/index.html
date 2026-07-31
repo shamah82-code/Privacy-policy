@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATLAS WhisperLink - Privacy Policy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Nightwatch palette — ink + cipher teal. Teal = link alive,
+               amber = needs human verification, red = destructive only. */
+            --bg-primary: #0B0F14;       /* ink */
+            --bg-secondary: #10161E;
+            --bg-card: #151D27;
+            --teal: #2FD8C5;             /* cipher teal */
+            --teal-dim: #1FA99A;
+            --amber: #E0A83C;            /* verify amber */
+            --red: #E4483A;              /* panic red */
+            --text-primary: #E6EAEE;
+            --text-secondary: #9AA7B4;
+            --text-dim: #66737F;
+            --border: rgba(47, 216, 197, 0.22);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        .bg-glow {
+            position: fixed;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(47, 216, 197, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+            position: relative;
+            z-index: 1;
+        }
+        .header {
+            text-align: center;
+            padding: 48px 0 40px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 48px;
+        }
+        .mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+        .header h1 span { color: var(--teal); }
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        .effective-date {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 6px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .tagline {
+            margin-top: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            color: var(--teal);
+            text-transform: uppercase;
+        }
+        .section { margin-bottom: 44px; }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--teal-dim), var(--teal));
+            color: #06251F;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        h2 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.3px; }
+        p { color: var(--text-secondary); margin-bottom: 12px; }
+        strong { color: var(--text-primary); }
+        .highlight-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--teal);
+            border-radius: 10px;
+            padding: 16px 18px;
+            margin: 14px 0;
+        }
+        .highlight-card.amber { border-left-color: var(--amber); }
+        .highlight-card.red { border-left-color: var(--red); }
+        .highlight-card h3 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+        .highlight-card p { margin-bottom: 0; font-size: 0.95rem; }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.92rem;
+        }
+        .data-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--border);
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .data-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(154, 167, 180, 0.12);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+        .badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 100px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .badge-teal { background: rgba(47, 216, 197, 0.14); color: var(--teal); }
+        .badge-amber { background: rgba(224, 168, 60, 0.14); color: var(--amber); }
+        .badge-red { background: rgba(228, 72, 58, 0.14); color: var(--red); }
+        .footer {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+        .footer a { color: var(--teal); text-decoration: none; }
+        ul.plain {
+            list-style: none;
+            margin: 12px 0;
+        }
+        ul.plain li {
+            color: var(--text-secondary);
+            padding: 6px 0 6px 26px;
+            position: relative;
+        }
+        ul.plain li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div class="container">
+
+        <div class="header">
+            <div class="mark">
+                <!-- Hop arcs: the WhisperLink brand mark -->
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <path d="M6 26 A 14 14 0 0 1 30 26" stroke="#2FD8C5" stroke-width="2.4" stroke-linecap="round"/>
+                    <path d="M10.5 26 A 9.5 9.5 0 0 1 25.5 26" stroke="#2FD8C5" stroke-width="2.4" stroke-linecap="round" opacity="0.65"/>
+                    <path d="M15 26 A 5 5 0 0 1 21 26" stroke="#2FD8C5" stroke-width="2.4" stroke-linecap="round" opacity="0.4"/>
+                    <circle cx="18" cy="26" r="2.2" fill="#2FD8C5"/>
+                </svg>
+            </div>
+            <h1>ATLAS <span>WhisperLink</span></h1>
+            <div class="subtitle">Privacy Policy</div>
+            <div class="effective-date">Effective: 2026-07-31 &nbsp;·&nbsp; v1.0</div>
+            <div class="tagline">No accounts · No phone numbers · No servers</div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>What ATLAS WhisperLink Is</h2>
+            </div>
+            <p>ATLAS WhisperLink is a <strong>serverless, peer-to-peer, end-to-end encrypted messenger</strong> for Android. Each phone is its own server: messages, voice notes, and calls travel directly between your device and your contact's device over the Tor network as hidden-service traffic. There is no company server in the middle — not for your messages, not for your keys, not for your contact list.</p>
+            <div class="highlight-card">
+                <h3>The design principle behind this policy</h3>
+                <p>Most privacy policies describe what a company does with your data. Ours is shorter, because the app is built so that <strong>there is no company in a position to have your data</strong>. What follows is an honest accounting of what stays on your phone, what crosses the network, and exactly what the one optional helper service (the doorbell relay) can and cannot see.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>What We Collect: Nothing</h2>
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Data Category</th><th>Collected?</th><th>Notes</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Account / registration</td><td><span class="badge badge-teal">NONE</span></td><td>There are no accounts. Pairing is a one-time QR/code exchange between two phones.</td></tr>
+                    <tr><td>Phone number / email</td><td><span class="badge badge-teal">NONE</span></td><td>Never asked for, never used.</td></tr>
+                    <tr><td>Message content</td><td><span class="badge badge-teal">NONE</span></td><td>End-to-end encrypted device-to-device. No server ever holds a message, encrypted or not.</td></tr>
+                    <tr><td>Contact list / address book</td><td><span class="badge badge-teal">NONE</span></td><td>The app never reads your phone's contacts. WhisperLink contacts exist only inside the app.</td></tr>
+                    <tr><td>Analytics / telemetry</td><td><span class="badge badge-teal">NONE</span></td><td>No analytics SDKs, no Firebase, no crash reporters. Ever.</td></tr>
+                    <tr><td>Location</td><td><span class="badge badge-teal">NONE</span></td><td>No location permission is requested.</td></tr>
+                    <tr><td>Cloud backups of app data</td><td><span class="badge badge-teal">NONE</span></td><td>App data is excluded from cloud backup. Your history lives on your phone only.</td></tr>
+                    <tr><td>Google services</td><td><span class="badge badge-teal">NONE</span></td><td>No Google Play Services dependency, no FCM push. Wake-ups use our own doorbell (Section 05).</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>Where Your Data Lives</h2>
+            </div>
+            <p>Everything the app knows lives <strong>on your phone</strong>:</p>
+            <div class="highlight-card">
+                <h3>Encrypted local database</h3>
+                <p>Messages, contacts, and voice notes are stored in a database encrypted with SQLCipher (AES-256). The database key is wrapped by a key held in your phone's <strong>hardware security module</strong> (StrongBox or TEE) — it never exists in plain form on disk.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>Cryptographic keys</h3>
+                <p>Your identity keys are generated on your phone and never leave it. Session secrets are derived per contact via an X3DH handshake and per-message keys via modern authenticated encryption (ChaCha20-Poly1305, Ed25519, X25519, BLAKE2b — libsodium).</p>
+            </div>
+            <div class="highlight-card red">
+                <h3>Panic wipe</h3>
+                <p>A single action destroys the database, all keys, Tor state, and scheduled work, then terminates the app. There is no recovery, no backup, and no copy anywhere else — by design.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>How Messages Travel</h2>
+            </div>
+            <p>Each phone runs a <strong>Tor hidden service</strong>. Sending a message means your phone dials your contact's onion address through the Tor network and delivers the encrypted message directly to their phone.</p>
+            <ul class="plain">
+                <li><strong>End-to-end encrypted:</strong> only your contact's device can decrypt. Tor relays carry ciphertext inside Tor's own encryption layers.</li>
+                <li><strong>No middleman storage:</strong> if your contact's phone is unreachable, the message waits <em>on your phone</em> and retries — it is never parked on a server.</li>
+                <li><strong>Anonymous transport:</strong> Tor hides each phone's IP address from the network and from intermediate relays.</li>
+                <li><strong>Man-in-the-middle defense:</strong> every pairing produces a <strong>safety number</strong> both people compare in person or by voice. Remotely-paired contacts stay quarantined until verified.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2>The Doorbell Relay — Honest Accounting</h2>
+            </div>
+            <p>Keeping Tor running 24/7 costs battery. The optional <strong>doorbell</strong> lets your phone sleep: each phone keeps one tiny connection to a relay server, and when someone has a message for you, the relay <em>rings</em> your phone — which wakes its own Tor and fetches the message directly from the sender. <strong>The relay is a doorbell, not a mailbox: messages never touch it.</strong></p>
+            <table class="data-table">
+                <thead>
+                    <tr><th>The relay CAN see</th><th>The relay CAN NEVER see</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Your IP address paired with a <strong>random token</strong> (rotated weekly)</td>
+                        <td>Your name, identity, or anything linking the token to a person</td>
+                    </tr>
+                    <tr>
+                        <td>When your phone is connected (online/offline schedule)</td>
+                        <td>Who rang you — rings arrive through Tor, so senders are anonymous</td>
+                    </tr>
+                    <tr>
+                        <td>Ring times</td>
+                        <td>Message existence, content, size, or metadata — messages never pass through it</td>
+                    </tr>
+                    <tr>
+                        <td>A sealed (encrypted) hint blob it cannot open</td>
+                        <td>Your contact list, onion addresses, or keys</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight-card">
+                <h3>Zero-store by construction</h3>
+                <p>The relay writes <strong>nothing to disk — ever</strong>. Its only working memory: which tokens are connected, ring rate-limits, and (for at most 10 minutes, in RAM) the latest missed ring per token so a phone that was briefly offline still gets woken. A relay restart erases everything and phones simply reconnect.</p>
+            </div>
+            <div class="highlight-card amber">
+                <h3>Your choice, three ways</h3>
+                <p>The app ships pointing at our relay so wake-ups work out of the box. You can <strong>replace it with your own self-hosted relay</strong> (a ~150-line open script), or <strong>turn the doorbell off entirely</strong> — the app then falls back to periodic checking (~15 minutes), trading latency for zero relay contact.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2>Voice &amp; Video Calls</h2>
+            </div>
+            <div class="highlight-card">
+                <h3>Voice calls</h3>
+                <p>Travel entirely over Tor between the two phones, end-to-end encrypted with the same message crypto. No relay involved.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>Video calls</h3>
+                <p>Use WebRTC with <strong>DTLS-SRTP end-to-end encryption</strong>, with key fingerprints exchanged over the Tor-encrypted channel — a relay can never decrypt the call. When both phones are on the same network, video flows directly. Across networks, encrypted packets may traverse a TURN relay (ours, or one you host): that relay sees <strong>encrypted packets and the two IP addresses, never content or keys</strong>. Call signaling always travels over Tor.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2>Permissions We Ask For, and Why</h2>
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Permission</th><th>Used for</th><th>When</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Microphone</td><td>Voice notes and calls</td><td>Only while recording or in a call</td></tr>
+                    <tr><td>Camera</td><td>Video calls and scanning pairing QR codes</td><td>Only while in use</td></tr>
+                    <tr><td>Notifications</td><td>Message/call alerts + the persistent "listening" notification Android requires</td><td>Always visible while the service runs</td></tr>
+                    <tr><td>Battery-optimization exemption</td><td>Keeps the doorbell connection alive through deep sleep</td><td>Standing</td></tr>
+                    <tr><td>Network</td><td>Tor, LAN pairing, calls, doorbell</td><td>Always</td></tr>
+                </tbody>
+            </table>
+            <p>The app requests <strong>no access</strong> to your contacts, SMS, call log, location, or files.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">08</span>
+                <h2>Your Controls</h2>
+            </div>
+            <ul class="plain">
+                <li><strong>Verify safety numbers</strong> — the trust ceremony that rules out interception; unverified remote pairings stay quarantined.</li>
+                <li><strong>Per-contact delete</strong> — removes the contact and the entire conversation from your phone.</li>
+                <li><strong>Doorbell toggle + relay override</strong> — use ours, use yours, or none.</li>
+                <li><strong>Disguised notification mode</strong> — for sideload builds, the foreground notification can present as a generic system process.</li>
+                <li><strong>Panic wipe</strong> — one action, everything gone, no recovery.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">09</span>
+                <h2>Changes &amp; Contact</h2>
+            </div>
+            <p>If this policy changes, the new version will be published at this address with an updated effective date. Because the app has no server connection to us, <strong>we cannot change what the app does remotely</strong> — behavior only changes when you install an update.</p>
+            <p>Questions: <a href="mailto:shamah82@gmail.com" style="color: var(--teal);">shamah82@gmail.com</a></p>
+        </div>
+
+        <div class="footer">
+            <p>ATLAS WhisperLink · Serverless P2P E2E-encrypted messaging</p>
+            <p style="margin-top:6px;">Also from ATLAS: <a href="https://shamah82-code.github.io/Privacy-policy/">ATLAS Shield Privacy Policy</a></p>
+        </div>
+
+    </div>
+</body>
+</html>
