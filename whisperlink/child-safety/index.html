@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATLAS WhisperLink - Child Safety Standards</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>        :root {
+            /* Nightwatch palette — ink + cipher teal. Teal = link alive,
+               amber = needs human verification, red = destructive only. */
+            --bg-primary: #0B0F14;       /* ink */
+            --bg-secondary: #10161E;
+            --bg-card: #151D27;
+            --teal: #2FD8C5;             /* cipher teal */
+            --teal-dim: #1FA99A;
+            --amber: #E0A83C;            /* verify amber */
+            --red: #E4483A;              /* panic red */
+            --text-primary: #E6EAEE;
+            --text-secondary: #9AA7B4;
+            --text-dim: #66737F;
+            --border: rgba(47, 216, 197, 0.22);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        .bg-glow {
+            position: fixed;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(47, 216, 197, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+            position: relative;
+            z-index: 1;
+        }
+        .header {
+            text-align: center;
+            padding: 48px 0 40px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 48px;
+        }
+        .mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+        .header h1 span { color: var(--teal); }
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        .effective-date {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 6px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .tagline {
+            margin-top: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            color: var(--teal);
+            text-transform: uppercase;
+        }
+        .section { margin-bottom: 44px; }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--teal-dim), var(--teal));
+            color: #06251F;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        h2 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.3px; }
+        p { color: var(--text-secondary); margin-bottom: 12px; }
+        strong { color: var(--text-primary); }
+        .highlight-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--teal);
+            border-radius: 10px;
+            padding: 16px 18px;
+            margin: 14px 0;
+        }
+        .highlight-card.amber { border-left-color: var(--amber); }
+        .highlight-card.red { border-left-color: var(--red); }
+        .highlight-card h3 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+        .highlight-card p { margin-bottom: 0; font-size: 0.95rem; }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.92rem;
+        }
+        .data-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--border);
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .data-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(154, 167, 180, 0.12);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+        .badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 100px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .badge-teal { background: rgba(47, 216, 197, 0.14); color: var(--teal); }
+        .badge-amber { background: rgba(224, 168, 60, 0.14); color: var(--amber); }
+        .badge-red { background: rgba(228, 72, 58, 0.14); color: var(--red); }
+        .footer {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+        .footer a { color: var(--teal); text-decoration: none; }
+        ul.plain {
+            list-style: none;
+            margin: 12px 0;
+        }
+        ul.plain li {
+            color: var(--text-secondary);
+            padding: 6px 0 6px 26px;
+            position: relative;
+        }
+        ul.plain li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div class="container">
+
+        <div class="header">
+            <div class="mark">
+                <!-- Hop arcs: the WhisperLink brand mark -->
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <path d="M6 26 A 14 14 0 0 1 30 26" stroke="#2FD8C5" stroke-width="2.4" stroke-linecap="round"/>
+                    <path d="M10.5 26 A 9.5 9.5 0 0 1 25.5 26" stroke="#2FD8C5" stroke-width="2.4" stroke-linecap="round" opacity="0.65"/>
+                    <path d="M15 26 A 5 5 0 0 1 21 26" stroke="#2FD8C5" stroke-width="2.4" stroke-linecap="round" opacity="0.4"/>
+                    <circle cx="18" cy="26" r="2.2" fill="#2FD8C5"/>
+                </svg>
+            </div>
+            <h1>ATLAS <span>WhisperLink</span></h1>
+            <div class="subtitle">Child Safety Standards</div>
+            <div class="effective-date">Last updated: 2026-09-21 &nbsp;·&nbsp; Developer: Abdullah Abushamah</div>
+            <div class="tagline">CSAE is prohibited absolutely</div>
+        </div>
+
+                <div class="section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>Our position</h2>
+            </div>
+            <p>We prohibit child sexual abuse and exploitation (CSAE) absolutely. This page states our standards, as required by Google Play's Child Safety Standards policy.</p>
+            <p>Any use of ATLAS WhisperLink to produce, request, or share child sexual abuse material, or to sexualise or groom a child, is forbidden. There is no exception and no context in which it is tolerated.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>How the app is built</h2>
+            </div>
+            <p>ATLAS WhisperLink is end-to-end encrypted with no central server. We cannot see, scan, store, or remove user content — not as a policy choice at the moment of a report, but as a property of the design. We state this plainly because a standards page that implies scanning we cannot perform would mislead both users and reviewers.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>What the app does provide</h2>
+            </div>
+            <ul>
+                <li><strong>Pairing is mutual.</strong> No one can contact a user who has not accepted them. There is no directory, no username search, and no way to be messaged by a stranger who has not been let in.</li>
+                <li><strong>Identity verification.</strong> Every new contact is held back until the two people compare a safety number, so a user knows who they are actually talking to.</li>
+                <li><strong>Blocking.</strong> A blocked person cannot message, call, reach the user through a shared group, or pair again.</li>
+                <li><strong>Nearby meeting is opt-in</strong>, off by default, and every meeting needs an explicit acceptance on both phones.</li>
+                <li><strong>Minimum age.</strong> The app is not for children under 13, or a higher age where local law requires one.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>Reporting</h2>
+            </div>
+            <p>Reports go to <a href="mailto:atlaswhisperlink.support@gmail.com">atlaswhisperlink.support@gmail.com</a> and are read by a person. We will respond, act on what is within our power — including removing a user's access to the app where we can — and direct reporters to the appropriate authority. <strong>If a child is in danger, contact your local police immediately.</strong></p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2>Reporting to authorities</h2>
+            </div>
+            <p>Where we receive a credible report of CSAE, we will report it to the relevant national authority (in the United States, the NCMEC CyberTipline) and cooperate with lawful requests. We are honest about our limits: we have no content to provide, because it never reaches us.</p>
+            <p>Child safety contact: <a href="mailto:atlaswhisperlink.support@gmail.com">atlaswhisperlink.support@gmail.com</a></p>
+        </div>
+
+<div class="footer">
+            <p>ATLAS WhisperLink · Serverless P2P E2E-encrypted messaging</p>
+            <p style="margin-top:6px;">Also from ATLAS: <a href="https://shamah82-code.github.io/Privacy-policy/">ATLAS Shield Privacy Policy</a></p>
+        </div>
+
+    </div>
+</body>
+</html>
