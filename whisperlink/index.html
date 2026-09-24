@@ -209,7 +209,7 @@
             </div>
             <h1>ATLAS <span>WhisperLink</span></h1>
             <div class="subtitle">Privacy Policy</div>
-            <div class="effective-date">Effective: 2026-09-22 &nbsp;·&nbsp; v1.1</div>
+            <div class="effective-date">Effective: 2026-09-24 &nbsp;·&nbsp; v1.2 &nbsp;·&nbsp; Developer: Abdullah Abushamah</div>
             <div class="tagline">No accounts · No phone numbers · No servers</div>
         </div>
 
@@ -331,7 +331,7 @@
             </div>
             <p><strong>Offline Mode (off by default)</strong> lets two phones in the same place message and call each other with <strong>no internet at all</strong> — no Tor, no relay, nothing leaves the room.</p>
             <p><em>What your phone broadcasts.</em> While the Offline tab is open, your phone announces a rotating set of <strong>pairwise recognition tags</strong>: each tag is computed from a secret you share with one specific contact and changes every 15 minutes. Only that contact can recognise their tag; to anyone else the broadcast is random-looking noise and identifies nobody. The broadcast also carries a random name that changes with the tags. <strong>Your chosen display name is broadcast only while the "Visible to people nearby" switch is on</strong>, so that someone who is not yet a contact can ask to connect.</p>
-            <p><em>When the radios run.</em> Bluetooth and Wi-Fi Direct are used <strong>only while the Offline tab is open on your screen</strong>. Nothing runs in the background, and turning Offline Mode off stops every radio immediately.</p>
+            <p><em>When the radios run.</em> Bluetooth and Wi-Fi Direct are used <strong>only while the Offline tab is open on your screen</strong>. Nothing runs in the background, and turning Offline Mode off stops every radio immediately. One exception: a hotspot link that is already carrying a conversation stays open if you switch to another tab or leave the app, so the conversation is not cut off. It still closes about two minutes after the conversation goes quiet, and always within 30 minutes.</p>
             <p><em>Meeting someone new.</em> A stranger appears on your radar only while both of you are Visible. Connecting needs an explicit accept on <strong>both</strong> phones, and the two of you must compare a safety number in person before the chat opens — the same trust ceremony as every other pairing.</p>
             <p><em>How the link is carried.</em> Android phones talk to each other directly over Wi-Fi Direct. Two iPhones link directly, phone to phone, over Wi-Fi or Bluetooth. To talk to an iPhone, an Android phone opens a short-lived private hotspot (no internet on it) and hands the iPhone its credentials over an encrypted Bluetooth exchange; the iPhone joins and the ordinary end-to-end encrypted session runs over that link. The hotspot closes itself after a couple of minutes without a live conversation, and always within 30 minutes.</p>
             <p><em>What this reveals.</em> Someone scanning nearby can tell that a WhisperLink phone is present (not whose), and a contact you are linked to over a hotspot shares that small private network with you for the duration. Nothing about Offline Mode is sent to the internet, to us, or to the relay.</p>
@@ -342,7 +342,7 @@
                 <span class="section-number">07</span>
                 <h2>Subscription</h2>
             </div>
-            <p>ATLAS WhisperLink is a paid subscription, billed by Google Play or the App Store. The store handles payment and your identity; <strong>we receive no payment details, no name, and no account</strong> — the app only learns from the store whether a subscription is active, and remembers that answer on the phone so it keeps working for a while offline. On iPhone the app checks Apple's signed entitlement record on the device; on Android it asks Google Play Billing on the device. When a subscription ends, the app stops sending and receiving messages until it is renewed. Cancellation and refunds are handled by the store.</p>
+            <p>ATLAS WhisperLink is a paid subscription, billed by Google Play or the App Store. The store handles payment and your identity; <strong>we receive no payment details, no name, and no account</strong> — the app only learns from the store whether a subscription is active, and remembers that answer on the phone so it keeps working for a while offline. On iPhone the app checks Apple's signed entitlement record on the device; on Android it asks Google Play Billing on the device. When a subscription ends, the app stops sending and receiving messages until it is renewed. Cancellation and refunds are handled by the store. You can check your status, manage or cancel, and restore a purchase at any time from Settings → Subscription in the app.</p>
         </div>
 
         <div class="section">
@@ -410,6 +410,7 @@
 
         <div class="footer">
             <p>ATLAS WhisperLink · Serverless P2P E2E-encrypted messaging</p>
+            <p style="margin-top:6px;">© 2026 Abdullah Abushamah</p>
             <p style="margin-top:6px;">Also from ATLAS: <a href="https://shamah82-code.github.io/Privacy-policy/">ATLAS Shield Privacy Policy</a></p>
         </div>
 
