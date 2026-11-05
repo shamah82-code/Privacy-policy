@@ -209,7 +209,7 @@
             </div>
             <h1>ATLAS <span>WhisperLink</span></h1>
             <div class="subtitle">Privacy Policy</div>
-            <div class="effective-date">Effective: 2026-11-05 &nbsp;·&nbsp; v1.3.1 &nbsp;·&nbsp; Developer: Abdullah Abushamah</div>
+            <div class="effective-date">Effective: 2026-11-05 &nbsp;·&nbsp; v1.3.2 &nbsp;·&nbsp; Developer: Abdullah Abushamah</div>
             <div class="tagline">No accounts · No phone numbers · No server can read your messages</div>
         </div>
 
@@ -221,7 +221,7 @@
             <p>ATLAS WhisperLink is a <strong>serverless, peer-to-peer, end-to-end encrypted messenger</strong> for Android and iPhone. Each phone is its own server: messages, voice notes, and calls travel directly between your device and your contact's device over the Tor network as hidden-service traffic. We hold none of your messages, keys, or contacts. Two things do not always travel directly: instant delivery to iPhones (Section 05) and video and group calls (Section 08).</p>
             <div class="highlight-card">
                 <h3>The design principle behind this policy</h3>
-                <p>Most privacy policies describe what a company does with your data. Ours is shorter, because the app is built so that <strong>there is no company in a position to read your messages or learn who you talk to</strong>. What follows is an honest accounting of what stays on your phone, what crosses the network, and exactly what our two helper services (the doorbell relay and the video relay) and Apple can and cannot see.</p>
+                <p>Most privacy policies describe what a company does with your data. Ours is shorter, because the app is built so that <strong>there is no company in a position to read your messages or learn who you talk to</strong>. What follows is an honest accounting of what stays on your phone, what crosses the network, and exactly what our two helper services (the doorbell relay and the video relay), Apple, and Google can and cannot see.</p>
             </div>
         </div>
 
@@ -324,6 +324,10 @@
             <div class="highlight-card amber">
                 <h3>Your choice, three ways</h3>
                 <p>The app ships pointing at our relay so wake-ups work out of the box. You can <strong>replace it with your own self-hosted relay</strong> (it wakes Android phones only; waking an iPhone needs ours), or <strong>turn the doorbell off entirely</strong> — on Android, Tor then stays connected all the time, which uses more battery; on iPhone, messages then wait until you and your contact next connect (whether your iPhone can be woken is the separate <em>Wake via Apple</em> switch). Video and group calls still use the video relay (Section 08) unless you set your own.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>On Android — no Google push</h3>
+                <p>An Android phone keeps its own connection to the relay, so it needs nothing from Google to wake up. <strong>No message, call alert, or wake-up passes through Google's servers.</strong> Messages to an Android phone travel phone to phone only. Google's part is the store: Google Play delivers the app and handles the subscription (Section 07).</p>
             </div>
             <div class="highlight-card">
                 <h3>On iPhone — Wake via Apple</h3>
